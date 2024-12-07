@@ -1,0 +1,6 @@
+# ninja log v5
+4	921	7552856025811180	CMakeFiles/adventofcode.dir/adventofcode.cpp.obj	52817dab4d562497
+8	1503	7552856031620975	CMakeFiles/adventofcode.dir/days/day7/day7.cpp.obj	6db30513c1d9d04c
+1503	1733	7552856033787518	adventofcode.exe	7e795e83958038b1
+4	1472	7552856768137605	CMakeFiles/adventofcode.dir/days/day7/day7.cpp.obj	6db30513c1d9d04c
+1472	1594	7552856769115169	adventofcode.exe	7e795e83958038b1

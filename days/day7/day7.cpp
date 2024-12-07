@@ -8,6 +8,8 @@
 #include <set>
 #include <chrono>
 
+// 3123869842195
+// 223472064194845
 enum operation {
 	add,
 	multiply,
@@ -60,9 +62,57 @@ bool canEqualValue_helper(int64_t current_val, int64_t wanted_val, const std::ve
 }
 
 bool canEqualValue(int64_t value, const std::vector<int64_t>& vec) {
-	bool rets[end]{};
 	for (operation opit = add; opit != end; opit = (operation)(opit + 1)) {
 		if (canEqualValue_helper(vec[0], value, vec, 1, opit)) return true;
+	}
+	return false;
+}
+
+int power(int base, int exponent) {
+    int result = 1;
+    for (int i = 0; i < exponent; ++i) {
+        result *= base;
+    }
+    return result;
+}
+
+bool canEqualValueBw_helper(int64_t in, const std::vector<int64_t>& vec, int position, operation op) {
+	int64_t operand = vec[position];
+	int64_t current = in;
+	switch (op) {
+	case add:
+		current -= operand;
+		if (current < 0) return false;
+		break;
+	case multiply:
+		if (current % operand != 0) return false;
+		current /= operand;
+		break;
+	case concat:
+		int count = 0;
+		for (int i = operand; i != 0; i /= 10) {
+			++count;
+		}
+		if (in % power(10, count) != operand) {
+			return false;
+		}
+		current /= power(10, count);
+		break;
+	}
+	if (position == 1) {
+		if (current == vec[0]) {
+			return true;
+		}
+		else return false;
+	}
+	for (operation opit = add; opit != end; opit = (operation)(opit + 1)){
+		if (canEqualValueBw_helper(current, vec, position - 1, opit)) return true;
+	}
+	return false;
+}
+bool canEqualValueBw(int64_t value, const std::vector<int64_t>& vec) {
+	for (operation opit = add; opit != end; opit = (operation)(opit + 1)){
+		if (canEqualValueBw_helper(value, vec, vec.size() - 1, opit)) return true;
 	}
 	return false;
 }
@@ -89,7 +139,20 @@ void day_main() {
 	}
 
 	auto end = std::chrono::high_resolution_clock::now();
-	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-	printf("RESULT: %lld %lld ms", result, duration.count());
+	auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+	printf("FORWARD: %lld %lld us\n", result, duration);
 
+	auto newstart = std::chrono::high_resolution_clock::now();
+
+	uint64_t newresult = 0;
+	for (const auto& [key, value] : map) {
+		if (canEqualValueBw(key, value)) {
+			newresult += key;
+		}
+	}
+
+	auto newend = std::chrono::high_resolution_clock::now();
+	auto newduration = std::chrono::duration_cast<std::chrono::nanoseconds>(newend - newstart).count();
+
+	printf("BACKWARDS: %lld %lld us (%lld x faster)\n", newresult, newduration, (duration / newduration));
 }
