@@ -1,0 +1,24 @@
+# ninja log v5
+3	911	7552622783825875	CMakeFiles/adventofcode.dir/adventofcode.cpp.obj	5bdbf9647bcbf0c1
+1149	1306	7552657372623808	adventofcode.exe	cf247f753092ef3c
+38	925	7547885730107847	CMakeFiles/adventofcode.dir/days/day1.cpp.obj	f16657a15cb6b7a6
+18	1758	7552662048550633	CMakeFiles/adventofcode.dir/days/day1/day1.cpp.obj	11aca7ed8e94ba1
+22	1523	7552662046180629	CMakeFiles/adventofcode.dir/days/day2/day2.cpp.obj	a4f1ab4bb19abe94
+26	1902	7552662049990629	CMakeFiles/adventofcode.dir/days/day3/day3.cpp.obj	d517f8d154d685de
+31	1565	7552662046620646	CMakeFiles/adventofcode.dir/days/day4/day4.cpp.obj	6688a75dbaac1e4
+35	1748	7552662048420663	CMakeFiles/adventofcode.dir/days/day5/day5.cpp.obj	8253869e3a544a41
+39	1698	7552662047930636	CMakeFiles/adventofcode.dir/days/day6/day6.cpp.obj	bb7524f30bd4bb6f
+44	1771	7552662048680601	CMakeFiles/adventofcode.dir/days/day7/day7.cpp.obj	1e4ca409f2348cd
+13	137	7552662616508307	adventofcode.exe	f9159640e9c5342e
+11	1614	7552664844861350	CMakeFiles/adventofcode.dir/days/day7/day7.cpp.obj	1e4ca409f2348cd
+1615	1784	7552664846267862	adventofcode.exe	f9159640e9c5342e
+13	1689	7552665013313493	CMakeFiles/adventofcode.dir/days/day7/day7.cpp.obj	1e4ca409f2348cd
+1690	1823	7552665014395390	adventofcode.exe	f9159640e9c5342e
+14	1688	7552665139578774	CMakeFiles/adventofcode.dir/days/day7/day7.cpp.obj	1e4ca409f2348cd
+1688	1830	7552665140671890	adventofcode.exe	f9159640e9c5342e
+15	1504	7552665316541687	CMakeFiles/adventofcode.dir/days/day7/day7.cpp.obj	1e4ca409f2348cd
+1505	1641	7552665317614074	adventofcode.exe	f9159640e9c5342e
+14	1750	7552665490029241	CMakeFiles/adventofcode.dir/days/day7/day7.cpp.obj	1e4ca409f2348cd
+1750	1885	7552665491099187	adventofcode.exe	f9159640e9c5342e
+14	1667	7552665579528715	CMakeFiles/adventofcode.dir/days/day7/day7.cpp.obj	1e4ca409f2348cd
+1668	1807	7552665580672719	adventofcode.exe	f9159640e9c5342e

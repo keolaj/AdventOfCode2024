@@ -1,0 +1,3 @@
+C:/Users/Keola/dev/c++/adventofcode/out/build/x64-debug/CMakeFiles/adventofcode.dir
+C:/Users/Keola/dev/c++/adventofcode/out/build/x64-debug/CMakeFiles/edit_cache.dir
+C:/Users/Keola/dev/c++/adventofcode/out/build/x64-debug/CMakeFiles/rebuild_cache.dir
