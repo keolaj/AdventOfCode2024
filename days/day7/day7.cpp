@@ -25,14 +25,16 @@ std::string filterString(const std::string s, const std::function<bool (char)>& 
 	return ret;
 }
 
-void populateMapFromString(const std::string& s, std::unordered_map<int64_t, std::vector<int64_t>>& map) {
+void populateMapFromString(const std::string& s, std::vector<int64_t>& test, std::vector<std::vector<int64_t>>& values) {
 	auto fs = filterString(s, [](char c) {return c != ':'; });
 	std::stringstream ss(fs);
 	int64_t key;
 	ss >> key;
+	test.push_back(key);
+	values.push_back({});
 	int64_t value;
 	while (ss >> value) {
-		map[key].push_back(value);
+		values[test.size() - 1].push_back(value);
 	}
 }
 
@@ -124,35 +126,38 @@ void day_main() {
 		printf("couldn't open file");
 	}
 	
-	std::unordered_map<int64_t, std::vector<int64_t>> map;
-	
+	std::vector<int64_t> tests;
+	std::vector<std::vector<int64_t>> values;
+
 	std::string s;
-	while (std::getline(input, s)) populateMapFromString(s, map);
+	while (std::getline(input, s)) populateMapFromString(s, tests, values);
 
 	auto start = std::chrono::high_resolution_clock::now();
 
 	uint64_t result = 0;
-	for (const auto& [key, value] : map) {
-		if (canEqualValue(key, value)) {
-			result += key;
+	for (int i = 0; i < tests.size(); ++i) {
+		int64_t test = tests[i];
+		if (canEqualValue(test, values[i])) {
+			result += test;
 		}
 	}
 
 	auto end = std::chrono::high_resolution_clock::now();
-	auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
-	printf("FORWARD: %lld %lld us\n", result, duration);
+	auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+	printf("FORWARD: %lld %lld microseconds\n", result, duration);
 
 	auto newstart = std::chrono::high_resolution_clock::now();
 
 	uint64_t newresult = 0;
-	for (const auto& [key, value] : map) {
-		if (canEqualValueBw(key, value)) {
-			newresult += key;
+	for (int i = 0; i < tests.size(); ++i) {
+		int64_t test = tests[i];
+		if (canEqualValueBw(test, values[i])) {
+			newresult += test;
 		}
 	}
 
 	auto newend = std::chrono::high_resolution_clock::now();
-	auto newduration = std::chrono::duration_cast<std::chrono::nanoseconds>(newend - newstart).count();
+	auto newduration = std::chrono::duration_cast<std::chrono::microseconds>(newend - newstart).count();
 
-	printf("BACKWARDS: %lld %lld us (%lld x faster)\n", newresult, newduration, (duration / newduration));
+	printf("BACKWARDS: %lld %lld microseconds (%lld x faster)\n", newresult, newduration, (duration / newduration));
 }
