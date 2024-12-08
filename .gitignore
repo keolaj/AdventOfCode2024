@@ -1,4 +1,6 @@
 out/
+*.txt
+
 # Prerequisites
 *.d
 
