@@ -2,7 +2,7 @@
 //
 
 #include "adventofcode.h"
-#include "./days/day7/day7.h"
+#include "./days/day8/day8.h"
 
 int main()
 {

@@ -8,8 +8,6 @@
 #include <set>
 #include <chrono>
 
-// 3123869842195
-// 223472064194845
 enum operation {
 	add,
 	multiply,
@@ -84,7 +82,7 @@ bool canEqualValueBw_helper(int64_t in, const std::vector<int64_t>& vec, int pos
 	switch (op) {
 	case add:
 		current -= operand;
-		if (current < 0) return false;
+		if (current < vec[0]) return false;
 		break;
 	case multiply:
 		if (current % operand != 0) return false;
@@ -95,10 +93,11 @@ bool canEqualValueBw_helper(int64_t in, const std::vector<int64_t>& vec, int pos
 		for (int i = operand; i != 0; i /= 10) {
 			++count;
 		}
-		if (in % power(10, count) != operand) {
+		int div = power(10, count);
+		if (in % div != operand) {
 			return false;
 		}
-		current /= power(10, count);
+		current /= div;
 		break;
 	}
 	if (position == 1) {
@@ -112,8 +111,9 @@ bool canEqualValueBw_helper(int64_t in, const std::vector<int64_t>& vec, int pos
 	}
 	return false;
 }
-bool canEqualValueBw(int64_t value, const std::vector<int64_t>& vec) {
-	for (operation opit = add; opit != end; opit = (operation)(opit + 1)){
+
+inline bool canEqualValueBw(int64_t value, const std::vector<int64_t>& vec) {
+	for (operation opit = add; opit != end; opit = (operation)(opit + 1)) {
 		if (canEqualValueBw_helper(value, vec, vec.size() - 1, opit)) return true;
 	}
 	return false;

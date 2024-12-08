@@ -12,10 +12,12 @@ endif()
 project ("adventofcode")
 
 # Add source to this project's executable.
-add_executable (adventofcode "adventofcode.cpp" "adventofcode.h" "days/day7/day7.h" "days/day7/day7.cpp")
+add_executable (adventofcode "adventofcode.cpp" "adventofcode.h"  "days/day8/day8.h" "days/day8/day8.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET adventofcode PROPERTY CXX_STANDARD 23)
 endif()
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc-")
 
 # TODO: Add tests and install targets if needed.
