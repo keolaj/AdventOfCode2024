@@ -43,14 +43,10 @@ bool pair_valid(std::pair<int, int> pair, int size) {
 	else return false;
 }
 
-int antinode_count(std::vector<std::vector<char>>& map) {
-	std::unordered_map<char, std::vector<std::pair<int, int>>> frequencies;
-	process_frequencies(map, frequencies);
-
+int antinode_count(std::unordered_map<char, std::vector<std::pair<int, int>>> frequencies, int size) {
 	std::unordered_set<int> seen_antifreqs;
 	int ret = 0;
 
-	int size = map.size();
 	for (const auto& [key, value] : frequencies) {
 		for (int i = 0; i < value.size(); ++i) {
 			int ihash = value[i].second * size + value[i].first;
@@ -101,9 +97,12 @@ void day_main() {
 
 	std::vector<std::vector<char>> map;
 	processInput(map, "C:\\Users\\Keola\\dev\\c++\\adventofcode\\days\\day8\\input.txt");
+
+	std::unordered_map<char, std::vector<std::pair<int, int>>> frequencies;
+	process_frequencies(map, frequencies);
 	
 	auto start = std::chrono::high_resolution_clock::now();
-	int result = antinode_count(map);
+	int result = antinode_count(frequencies, map.size());
 	auto end = std::chrono::high_resolution_clock::now();
 	int duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 	printf("RESULT: %d %d microseconds", result, duration);
