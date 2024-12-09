@@ -87,7 +87,7 @@ struct file {
 	int origSize;
 };
 
-void processFs2(std::vector<int>& fs, std::vector<int> map) {
+void processFs2(std::vector<int>& fs, std::vector<int> map) { // I don't have time to optimize this today I have finals to study for
 	std::vector<file> intermediate;
 	int id = 0;
 	if (map.size() % 2 != 0) map.push_back(0);
@@ -117,13 +117,7 @@ void processFs2(std::vector<int>& fs, std::vector<int> map) {
 						break;
 					}
 				}
-				if (transferIndex == -1) {
-					std::cout << "invalid index";
-				}
 				for (int k = 0; k < transfer.origSize; ++k) {
-					if (fs[freeIndex] != -1) {
-						std::cout << "invalid write";
-					}
 					fs[freeIndex++] = transfer.id;
 					fs[transferIndex--] = -1;
 				}
