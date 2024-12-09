@@ -2,12 +2,28 @@
 #include <iostream>
 #include <fstream>
 
+std::vector<char> processChar(const char* path) {
+	std::vector<char> map;
+	std::ifstream input{ path };
+	if (!input.is_open()) {
+		std::cout << "couldn't open file\n";
+		return map;
+	}
+	char c;
+	while (true) {
+		input.get(c);
+		if (input.eof()) break;
+		map.push_back(c);
+	}
+	return map;
+}
+
 std::vector<std::vector<char>> processChar2d(const char* path) {
 	std::vector<std::vector<char>> map;
 	std::ifstream input{ path };
 	if (!input.is_open()) {
 		std::cout << "couldn't open file\n";
-		return;
+		return map;
 	}
 	char c;
 	int line = 0;

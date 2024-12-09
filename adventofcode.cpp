@@ -1,8 +1,5 @@
-﻿// adventofcode.cpp : Defines the entry point for the application.
-//
-
-#include "adventofcode.h"
-#include "./days/day8/day8.h"
+﻿#include "adventofcode.h"
+#include "./days/day9/day9.h"
 
 int main()
 {
