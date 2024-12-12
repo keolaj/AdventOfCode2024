@@ -3,6 +3,7 @@
 #include <iostream>
 #include <unordered_set>
 #include <algorithm>
+#include <chrono>
 
 bool cantTraverse(const std::vector<std::vector<int>>& map, int x, int y) {
 	int current = map[y][x];
@@ -57,6 +58,7 @@ void day_main() {
 	auto map = processInt2d("C:\\Users\\Keola\\dev\\c++\\AdventOfCode2024\\days\\day10\\input.txt");
 	int result1 = 0;
 	int result2 = 0;
+	auto begin = std::chrono::high_resolution_clock::now();
 	for (int y = 0; y < map.size(); ++y) {
 		for (int x = 0; x < map[y].size(); ++x) {
 			if (map[y][x] == 0) {
@@ -65,7 +67,10 @@ void day_main() {
 			}
 		}
 	}
+	auto end = std::chrono::high_resolution_clock::now();
+	auto durationMS = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
 	end:
 	printf("PART1: %d\n", result1);
 	printf("PART2: %d\n", result2);
+	printf("DURATION: %lld", durationMS);
 }

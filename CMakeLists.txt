@@ -9,7 +9,7 @@ endif()
 project ("adventofcode")
 
 # Add source to this project's executable.
-add_executable (adventofcode "adventofcode.cpp" "adventofcode.h" "days/day10/day10.h" "days/day10/day10.cpp")
+add_executable (adventofcode "adventofcode.cpp" "adventofcode.h" "days/day11/day11.h" "days/day11/day11.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET adventofcode PROPERTY CXX_STANDARD 23)

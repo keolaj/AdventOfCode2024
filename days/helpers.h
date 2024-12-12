@@ -42,6 +42,22 @@ std::vector<std::vector<char>> processChar2d(const char* path) {
 	return map;
 }
 
+std::vector<uint64_t> processInt(const char* path) {
+	std::vector<uint64_t> map;
+	std::ifstream input{ path };
+	if (!input.is_open()) {
+		std::cout << "couldn't open file\n";
+		return map;
+	}
+	uint64_t n;
+	while (true) {
+		input >> n;
+		map.push_back(n);
+		if (input.eof()) break;
+	}
+	return map;
+}
+
 std::vector<std::vector<int>> processInt2d(const char* path) {
 	std::vector<std::vector<int>> map;
 	std::ifstream input{ path };
